@@ -3,6 +3,11 @@ var ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+// https://gist.github.com/AugustMiller/85b54d49493bb71ba81e
+const map = (num, in_min, in_max, out_min, out_max) => {
+      return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
+
 var crowd = [];
 var settings = {
       'crowd': {
@@ -29,12 +34,13 @@ function render() {
       for (var i = 0; i < crowd.length; i++) {
             var row = crowd[i];
             for (var j = 0; j < row.length; j++) {
-                  ctx.fillStyle = 'hsla(' + row[j] * 360 + ', 100%, 50%, 1)';
+                  var hue = map(row[j], 0, 1, 200, 250);
+                  ctx.fillStyle = 'hsla(' + hue + ', 100%, 50%, 1)';
                   ctx.fillRect(
                         j * width,
                         i * height,
-                        width,
-                        height
+                        width + 1,
+                        height + 1
                   );
             }
       }
