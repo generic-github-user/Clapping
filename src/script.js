@@ -21,3 +21,22 @@ for (var i = 0; i < s.crowd.size.x; i++) {
       }
       crowd.push(row);
 }
+
+var width = canvas.width / s.crowd.size.x;
+var height = canvas.height / s.crowd.size.y;
+
+function render() {
+      for (var i = 0; i < crowd.length; i++) {
+            var row = crowd[i];
+            for (var j = 0; j < row.length; j++) {
+                  ctx.fillStyle = 'hsla(' + row[j] * 360 + ', 100%, 50%, 1)';
+                  ctx.fillRect(
+                        j * width,
+                        i * height,
+                        width,
+                        height
+                  );
+            }
+      }
+}
+render();
