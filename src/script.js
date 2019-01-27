@@ -8,6 +8,10 @@ const map = (num, in_min, in_max, out_min, out_max) => {
       return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
 
+function distance(x1, y1, x2, y2) {
+      return Math.sqrt(((x2 - x1) ** 2) + ((y2 - y1) ** 2));
+}
+
 var crowd = [];
 var settings = {
       'crowd': {
