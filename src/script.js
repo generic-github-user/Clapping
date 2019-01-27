@@ -46,3 +46,12 @@ function render() {
       }
 }
 render();
+function update() {
+      var last_step = JSON.parse(JSON.stringify(crowd));
+      for (var i = 0; i < crowd.length; i++) {
+            for (var j = 0; j < row.length; j++) {
+                  crowd[i][j] = last_step[i][j] + 0.1;
+            }
+      }
+      render();
+}
