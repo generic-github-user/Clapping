@@ -45,7 +45,7 @@ function render() {
             }
       }
 }
-render();
+
 function update() {
       var last_step = JSON.parse(JSON.stringify(crowd));
       for (var i = 0; i < crowd.length; i++) {
@@ -55,3 +55,5 @@ function update() {
       }
       render();
 }
+
+setInterval(update, 100);
